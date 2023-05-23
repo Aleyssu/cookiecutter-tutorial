@@ -4,9 +4,9 @@ This is a cookiecutter repo for demonstrating what cookiecutter is, what it can 
 
 # Table of contents  
 1. [Introduction](#introduction) 
-    1. [What is Cookiecutter?](#what-is-cookiecutter?)
-    2. [What does it do?](#what-does-it-do?)
-    3. [What's a template?](#what's-a-template)
+    1. [What is Cookiecutter?](#what-is-cookiecutter)
+    2. [What does it do?](#what-does-it-do)
+    3. [What's a template?](#what-s-a-template)
     4. [How do I execute it?](#how-do-i-execute-it)
 2. [Some paragraph](#paragraph1)  
     1. [Sub paragraph](#subparagraph1)  
