@@ -33,7 +33,7 @@ Note that your chosen command line must support Unix commands in order to work.
   cookiecutter <path>
 ~~~
 
-Where <path> is the path to the zip or root directory of your chosen cookiecutter.  
+Where `<path>` is the path to the zip or root directory of your chosen cookiecutter.  
 
 ---
 
