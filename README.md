@@ -8,9 +8,7 @@ This is a cookiecutter repo for demonstrating what cookiecutter is, what it can 
     2. [What does it do?](#what-does-it-do)
     3. [What's a template?](#whats-a-template)
     4. [How do I execute it?](#how-do-i-execute-it)
-2. [Some paragraph](#paragraph1)  
-    1. [Sub paragraph](#subparagraph1)  
-3. [Another paragraph](#paragraph2)  
+2. [Examples/Advanced usage](#examples/advanced-usage)  
 
 # Introduction
 ## What is Cookiecutter?
@@ -20,8 +18,6 @@ This is a cookiecutter repo for demonstrating what cookiecutter is, what it can 
 ## What's a template?
 
 ## How do I execute it?
-
-
 ## Run Locally  
 
 Clone the project  
@@ -47,3 +43,6 @@ Start the server
 ~~~bash  
 npm run start
 ~~~
+
+# Examples/Advanced Usage
+
