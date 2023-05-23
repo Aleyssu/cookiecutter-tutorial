@@ -8,7 +8,7 @@ This is a cookiecutter repo for demonstrating what cookiecutter is, what it can 
     2. [What does it do?](#what-does-it-do)
     3. [What's a template?](#whats-a-template)
     4. [How do I execute it?](#how-do-i-execute-it)
-2. [Examples/Advanced usage](#examples/advanced-usage)  
+2. [Examples/Advanced usage](#examples-advanced-usage)  
 
 # Introduction
 ## What is Cookiecutter?
