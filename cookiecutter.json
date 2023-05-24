@@ -1,0 +1,58 @@
+{
+    "project_name": "Test Project",
+	"__project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
+	
+	"__private_rendered_test_variable": "{{ cookiecutter.project_name }}",
+	"_private_unrendered_test_variable": "{{ cookiecutter.project_name }}",
+	"_copy_without_render": [
+		"*.html",
+		"*unrendered"
+	],
+	
+	"keep_files": [
+		"test1.txt",
+		"test2.txt",
+		"all",
+		"none"
+	],
+	"choice_variable": [
+		"choice_1",
+		"choice_2",
+		"choice_3",
+		"choice_4"
+	],
+	
+	"file_types": {
+        "png": {
+            "name": "Portable Network Graphic",
+            "library": "libpng",
+            "apps": [
+                "GIMP"
+            ]
+        },
+        "bmp": {
+            "name": "Bitmap",
+            "library": "libbmp",
+            "apps": [
+                "Paint",
+                "GIMP"
+            ]
+        }
+    },
+	"dictionary_variable": {
+		"key_1": {
+			"field_1": "apple",
+			"field_2": "tomato",
+			"field_3": "potato"
+		},
+		"key_2": {
+			"field_1": "apple",
+			"field_2": "tomato",
+			"field_3": "potato"
+		}
+	},
+	
+	"__jinja2_extension_variable": "{% now 'utc', '%Y' %}",
+	
+	"__timestamp": "null"
+}

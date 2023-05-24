@@ -1,0 +1,9 @@
+On execution when using a local template, cookiecutter picks one folder/file within the 
+chosen folder with a jinja variable in its name to process.
+
+The file chosen is determined by alphabetical order - if you rename this file for example 
+by adding a '1' to the beginning, cookiecutter will process this file instead of the original 
+template folder, '{{cookiecutter.__project_slug}}'.
+
+Strangely enough, instead of a text file, a directory with the name of this text file will be 
+generated if you do this.

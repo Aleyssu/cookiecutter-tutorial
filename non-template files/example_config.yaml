@@ -1,0 +1,26 @@
+# Changes the default arguments of the template
+default_context:
+    project_name: "Default Project"
+    keep_files: "all"
+    
+# Directory where your cookiecutters are cloned 
+# to when you use Cookiecutter with a repo argument.
+cookiecutters_dir: "/home/downloads"
+
+# Directory where Cookiecutter dumps context data to, 
+# which you can fetch later on when using the replay feature.
+replay_dir: "/home/downloads"
+
+# Use instead of the full path to the template
+#
+# As opposed to: 
+# cookiecutter --config-file default_config.yaml https://github.com/Aleyssu/cookiecutter-test
+#
+# you can do:
+# cookiecutter --config-file default_config.yaml gh:Aleyssu/cookiecutter-test
+#
+# or:
+# cookiecutter --config-file default_config.yaml pp
+abbreviations:
+    pp: https://github.com/Aleyssu/cookiecutter-test
+    gh: https://github.com/{0}.git

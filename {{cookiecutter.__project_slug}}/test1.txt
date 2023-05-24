@@ -1,0 +1,21 @@
+Project name: {{ cookiecutter.project_name }}
+Project slug: {{ cookiecutter.__project_slug }}
+
+Unrendered test: {{ cookiecutter._private_unrendered_test_variable }}
+Rendered test: {{ cookiecutter.__private_rendered_test_variable }}
+
+Timestamp: {{ cookiecutter.__timestamp }}
+
+{# Accessing elements from Jinja dictionaries #}
+Name of png: {{ cookiecutter.file_types["png"]["name"] }}
+
+__jinja2_extension_variable: {{ cookiecutter.__jinja2_extension_variable }}
+
+{# Demonstrating the nuance of formatted text when using Jinja2 #}
+a{% if cookiecutter.project_name == "Test Project" %}b
+Pass
+c{% else %}d
+Fail
+e{% endif %}f
+
+{% if cookiecutter.project_name == "Test Project" %}Pass{% else %}Fail{% endif %}

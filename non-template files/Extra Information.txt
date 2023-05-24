@@ -1,0 +1,33 @@
+Jinja2 extensions can help with variable assignment.
+External extensions must be manually installed by the user in order to work.
+Default extensions already included with cookiecutter include:
+
+cookiecutter.extensions.JsonifyExtension
+cookiecutter.extensions.RandomStringExtension
+cookiecutter.extensions.SlugifyExtension
+cookiecutter.extensions.UUIDExtension
+jinja2_time.TimeExtension
+
+Example usages:
+
+cookiecutter.extensions.JsonifyExtension: 
+Converts python objects to JSON format
+{% {'a': True} | jsonify %}
+{"a": true}
+
+cookiecutter.extensions.RandomStringExtension
+Generates a random n-size character string.
+{{ random_ascii_string(12) }}
+fTBinHGGMkSk
+{{ random_ascii_string(6, punctuation=True) }}
+TUn]?T
+
+cookiecutter.extensions.SlugifyExtension
+Converts strings into their dashed versions
+{% "It's a me Mario" | slugify %}
+it-s-a-me-mario
+
+cookiecutter.extensions.UUIDExtension
+Generates a uuid4 string
+{{ uuid4() }}
+3a9e06b7-3988-404f-84f3-82356cc19e99

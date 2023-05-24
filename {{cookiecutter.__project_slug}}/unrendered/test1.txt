@@ -1,0 +1,16 @@
+In cookiecutter.json, file extensions and names put under the "_copy_without_render" 
+key will not have their contents rendered by Jinja.
+
+Project name: {{ cookiecutter.project_name }}
+Project slug: {{ cookiecutter.__project_slug }}
+
+Unrendered test: {{ cookiecutter._private_unrendered_test_variable }}
+Rendered test: {{ cookiecutter.__private_rendered_test_variable }}
+
+Timestamp: {{ cookiecutter.__timestamp }}
+
+{% if cookiecutter.project_name == "Test Project" %}
+Pass
+{% else %}Fail{% endif %}
+
+{% if cookiecutter.project_name == "Test Project" %}Pass{% else %}Fail{% endif %}
