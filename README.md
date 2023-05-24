@@ -5,7 +5,7 @@ This is a cookiecutter repo for demonstrating what cookiecutter is, what it can 
 
 See https://cookiecutter.readthedocs.io/en/stable/installation.html for installation.
 
-This repo is also contains a cookiecutter project which demonstrates much of Cookiecutter's functionality. Feel free to download and experiment with it. You can also generate a project directly from the repo (see [Running Cookiecutter](#if-youre-running-on-a-remote-cookiecutter-repo-on-github)) (make sure you're using a command line with Unix support!)
+This repo is also contains a cookiecutter project which demonstrates much of Cookiecutter's functionality. Feel free to download and experiment with it. You can also generate a project directly from the repo (see [Running Cookiecutter](#if-youre-running-with-a-remote-cookiecutter-repo-from-github)) (make sure you're using a command line with Unix support!)
 
 # Table of contents  
 1. [Introduction](#introduction) 
@@ -44,7 +44,7 @@ Where `<path>` is the path to the zip or root directory of your chosen cookiecut
 
 ---
 
-#### If you're with a remote cookiecutter repo on github:
+#### If you're running with a remote cookiecutter repo from github:
 ~~~bash  
   cookiecutter https://github.com/Aleyssu/cookiecutter-tutorial
 ~~~
