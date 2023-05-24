@@ -7,7 +7,7 @@ See https://cookiecutter.readthedocs.io/en/stable/installation.html for installa
 # Table of contents  
 1. [Introduction](#introduction) 
     1. [What is Cookiecutter?](#what-is-cookiecutter)
-    4. [Running Cookiecutter](#how-do-i-execute-it)
+    4. [Running Cookiecutter](#running-cookiecutter)
         1. [Command line](#running-via-command-line)
         2. [Command line arguments](#command-line-arguments)
         3. [Python](#running-from-python)
@@ -24,7 +24,8 @@ Cookiecutter takes a cookiecutter directory or cookiecutter repo as its main inp
 
 **Note that "Cookiecutter" can refer to the utility itself, or to the repo/directory which is given as input. For disambiguation, I'll try to refer to the utility in uppercase as in "Cookiecutter," and the input directory in lowercase as in "cookiecutter."**
 
-## How do I execute it?
+
+## Running Cookiecutter
 ### Running via command-line
 
 Note that your chosen command line must support Unix commands in order to work.
