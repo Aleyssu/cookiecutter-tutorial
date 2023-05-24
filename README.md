@@ -35,7 +35,7 @@ The generated project directory is a modified copy of the original template. The
 
 Note that your chosen command line must support Unix commands in order to work.
 
-#### If you're running on a local cookiecutter:
+#### If you're running with a local cookiecutter:
 ~~~bash  
   cookiecutter <path>
 ~~~
@@ -44,7 +44,7 @@ Where `<path>` is the path to the zip or root directory of your chosen cookiecut
 
 ---
 
-#### If you're running on a remote cookiecutter repo on github:
+#### If you're with a remote cookiecutter repo on github:
 ~~~bash  
   cookiecutter https://github.com/Aleyssu/cookiecutter-tutorial
 ~~~
