@@ -1,5 +1,5 @@
 
-# Cookiecutter Tutorial
+# Cookiecutter Tutorial (WIP)
 This is a cookiecutter repo for demonstrating what cookiecutter is, what it can do, how to use it, and much of its functionalities.
 
 See https://cookiecutter.readthedocs.io/en/stable/installation.html for installation.
@@ -20,7 +20,7 @@ Cookiecutter is a utility which generates "projects" from templates with the ass
 
 Cookiecutter takes a cookiecutter directory or cookiecutter repo as its main input. Typically, the template directory is the same as the root directory of the cookiecutter. While running Cookiecutter, you'll be prompted with several variables and their default values from `cookiecutter.json`. You can type your own value in place of the default, or simply press enter without typing anything to retain the default value. Upon answering all these prompts, Cookiecutter will proceed with generating the project.
 
-# **Talk about use cases**
+The generated project directory is a modified copy of the original template. The modifications typically involve the removal and movement of files within the original template, along with a wide range of text formatting for the names of every file along with their contents. Depending on how the template is created and what answers are given to the prompts during generation, the resulting directory can be structured and formatted in a near-infinite range of different possibilities. Cookiecutter is especially powerful for applications such as generating project directories containing all the dependencies and structuring needed as a framework for new coding projects.
 
 **Note that "Cookiecutter" can refer to the utility itself, or to the repo/directory which is given as input. For disambiguation, I'll try to refer to the utility in uppercase as in "Cookiecutter," and the input directory in lowercase as in "cookiecutter."**
 
@@ -129,6 +129,16 @@ When generating projects, Cookiecutter saves your inputs to a json file in '~/.c
 
 # Cookiecutter in-depth
 
+## Runtime
+Here's a flowchart depicting the order in which Cookiecutter does things during execution:
+```mermaid
+graph LR
+A[Hard edge] -->B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```
+
 ## Templates
 In a typical cookiecutter where the template directory is the root directory, the file structure would look something like this:
 
@@ -142,7 +152,7 @@ Main Directory / Repo/
 └── cookiecutter.json  
 ```
 ### cookiecutter.json
-This is a vital component of all cookiecutters. Within this file contains
+This is a vital component of all cookiecutters. Within this file contains all the Jinja2 variables which the user is prompted with during project generation, and these are the variables which are used when formatting the text in the names and contents of the project files.
 
 ### "{{ processed_directory }}"
 Note the formatting of the first sub-directory's name. This is the syntax for Jinja2 variables, and it's necessary for there to be a directory named under a variable from `cookiecutter.json` in this syntax. When executing, Cookiecutter will pick the first directory / file it finds which contains a Jinja2 variable in its name (based on lexicographical order) to copy and process into a project. 
