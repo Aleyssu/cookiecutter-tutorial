@@ -1,11 +1,14 @@
 
 
-# Cookiecutter Tutorial (WIP)
+
+# Cookiecutter Tutorial
 This is a cookiecutter repo for demonstrating what cookiecutter is, what it can do, how to use it, and much of its functionalities.
 
 See https://cookiecutter.readthedocs.io/en/stable/installation.html for installation.
 
 This repo is also contains a cookiecutter project which demonstrates much of Cookiecutter's functionality. Feel free to download and experiment with it. You can also generate a project directly from the repo (see [Running Cookiecutter](#if-youre-running-with-a-remote-cookiecutter-repo-from-github)) (make sure you're using a command line with Unix support!)
+
+Much of this wiki's content is thanks to the help of Cookiecutter's official documentation, along with personal experimentation to see into Cookiecutter's workings. See https://cookiecutter.readthedocs.io/en/stable/advanced/index.html for the official documentation.
 
 # Table of contents  
 1. [Introduction](#introduction) 
@@ -159,7 +162,6 @@ Main Directory / Repo/
 ### cookiecutter.json
 This is a vital component of all cookiecutters. Within this file contains all the Jinja variables which the user is prompted with during project generation, and these are the variables which are used when formatting the text in the names and contents of the project files.  
 Here's an example file with all the different variable types present:
-**(to be extended)**
 ```json
 {
     "standard_variable": "Test Project",
@@ -193,19 +195,116 @@ Here's an example file with all the different variable types present:
     },
 	"__jinja2_extension_variable": "{% now 'utc', '%Y' %}"
 }
-
 ```
+`"standard_variable": ""`
+These are the simplest Jinja2 variables, holding the value of a string or other variable (using the {{  }} syntax).
+
+`"__private_rendered_variable": ""`
+Similar to standard variables, private rendered variables, indicated by the prepended `__`, can hold the value of a string or other variable. As a private variable, there will be no prompt for this variable during project generation.
+In this example, this variable holds the value, "Test Project."
+
+`"_private_unrendered_variable": ""`
+Private unrendered variables, indicated by the prepended `_`, will only display strings. As a private variable, there will be no prompt for this variable during project generation. 
+In this example, this variable holds the value, "{{ cookiecutter.standard_variable }}."
+
+`"_copy_without_render": []`
+This is a special variable which must be written exactly as shown. `_copy_without_render` contains a list of strings representative to [Unix wildcards](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm) which indicate the files and directories that should not be rendered by Jinja2. In this example, .html files and files/directories named "unrendered" will not be rendered.
+
+`"choice_variable": []`
+Choice variables, indicated by the square brackets containing a list of strings, provide the user with a multiple-choice prompt on project generation where they are given the option to select one of the given strings. The first string in the list is the default value.
+
+`"dictionary_variable": {}`
+Dictionary variables are as the name suggests, containing key-value pairs. Dictionaries can also contain lists and other dictionaries. They provide a way to define deep-structured information when rendering templates.
+
+`"__jinja2_extension_variable": ""`
+This is just another rendered private variable put in place to demonstrate the ability to fill variable values with those from Jinja2 extensions. In this example, the built-in *jinja2_time.TimeExtension* extension is used to display the current year at the time of project generation.
 
 ### "{{ processed_directory }}"
 Note the formatting of the first sub-directory's name. This is the syntax for Jinja variables, and it's necessary for there to be a directory named under a variable from `cookiecutter.json` in this syntax. When executing, Cookiecutter will pick the first directory / file it finds which contains a Jinja variable in its name (based on lexicographical order) to copy and process into a project. 
 
 In this example, it is assumed that there's a variable named `processsed_directory` within `cookiecutter.json`. After running Cookiecutter, a new directory will be created with the name of whatever value `processed_directory` was assigned. If `processed_directory` was assigned with "apple," then the generated project directory would also be called "apple."
 
-Note that outside of the double curly brackets you may include whatever text you wish, so if the sub-directory was instead named "pine{{ processed_directory }}," the outputted directory would be named "pineapple" (assuming that `processed_directory` was still assigned with "apple"). A more in-depth explanation of Jinja2 can be found **(to be added)**
+Note that outside of the double curly brackets you may include whatever text you wish, so if the sub-directory was instead named "pine{{ processed_directory }}," the outputted directory would be named "pineapple" (assuming that `processed_directory` was still assigned with "apple"). A more in-depth explanation of Jinja2 can be found [here](https://jinja.palletsprojects.com/en/3.1.x/).
 
 ### Hooks
-**(to be added)**
+Hooks are an optional component of cookiecutter templates. They can assist in input validation for the prompts, and custom generation behavior such as removing and restructuring directories in the final project directory.
+
+The *pre_gen_project.py* hook runs right after all the input prompts have been answered, and right before the new project directory has been created. It is typically used to ensure that the input prompts are valid for the given template.
+
+Example script (found in this repo's cookiecutter template):
+```pre_gen_project.py```
+```python
+import re
+import sys
+import os
+
+MODULE_REGEX = r'^[_a-zA-Z][_a-zA-Z0-9 ]+$'
+project_name = '{{ cookiecutter.project_name }}'
+
+if not re.match(MODULE_REGEX, project_name):
+    print('ERROR: %s is not a valid project name!' % project_name)
+
+    # exits with status 1 to indicate failure
+    sys.exit(1)
+```
+This script checks the `project_name` variable and makes sure that it is at least 2 characters long, and doesn't contain any special characters. If this condition isn't met, it exits with a non-zero status (1 in this case) to indicate failure and tell Cookiecutter to abort project generation.
+
+Meanwhile, the *post_gen_project.py* script runs after the project directory has been created and rendered by Jinja2. It's typically used for moving and removing directories/files, but you can realistically do anything that Python permits here.
+
+Example script (found in this repo's cookiecutter template):
+`post_gen_project.py`
+```python
+import os
+import shutil
+from pathlib import Path
+
+REMOVE_PATHS = []
+MOVE_PATHS = []
+
+keep_files = '{{ cookiecutter.keep_files }}'
+
+if keep_files == "test1.txt":
+    REMOVE_PATHS.append("test2.txt")
+elif keep_files == "test2.txt":
+    REMOVE_PATHS.append("test1.txt")
+elif keep_files == "none":
+    REMOVE_PATHS += ["test1.txt", "test2.txt"]
+    
+path_to_remove: str
+for path_to_remove in REMOVE_PATHS:
+    path_to_remove = path_to_remove.strip()
+    if path_to_remove and os.path.exists(path_to_remove):
+        if os.path.isdir(path_to_remove):
+            shutil.rmtree(path_to_remove)
+        else:
+            os.unlink(path_to_remove)
+```
+This script, based on the user's selection for `keep_files`, removes a combination of the files *test1.txt* and *test2.txt*. `MOVE_PATHS` is unused here.
 
 ---
-On the other hand, a cookiecutter where there are multiple templates or where the template directory is located within a sub-directory of the cookiecutter would look something like this: **(to be added)**
+On the other hand, a cookiecutter where there are multiple templates or where the template directory is located within a sub-directory of the cookiecutter would look something like this: 
+```
+Main Directory / Repo/
+├── Template Directory 1/
+│   ├── {{ processed_directory }}/
+│   │   └── # Files here will processed by cookiecutter
+│   ├── hooks/
+│   │   ├── pre_gen_project.py
+│   │   └── post_gen_project.py
+│   └── cookiecutter.json
+|
+└── Template Directory 2/
+    ├── {{ processed_directory }}/
+    │   └── # Files here will processed by cookiecutter
+    ├── hooks/
+    │   ├── pre_gen_project.py
+    │   └── post_gen_project.py
+    └── cookiecutter.json
+```
+Fundamentally, the templates themselves are structured the same as that of regular cookiecutters.
 
+If you were to run Cookiecutter on a project like this, you would have to use the `--directory` argument like this:
+```bash
+cookiecutter --directory "Template Directory 1" <path to main directory>
+```
+Assuming that the first template is the one you're after.
