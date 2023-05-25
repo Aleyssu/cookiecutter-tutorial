@@ -234,7 +234,7 @@ Hooks are an optional component of cookiecutter templates. They can assist in in
 
 The *pre_gen_project.py* hook runs right after all the input prompts have been answered, and right before the new project directory has been created. It is typically used to ensure that the input prompts are valid for the given template.
 
-Example script (found in this repo's cookiecutter template):
+Example script (found in this repo's cookiecutter template):  
 ```pre_gen_project.py```  
 ```python
 import re
@@ -254,7 +254,7 @@ This script checks the `project_name` variable and makes sure that it is at leas
 
 Meanwhile, the *post_gen_project.py* script runs after the project directory has been created and rendered by Jinja2. It's typically used for moving and removing directories/files, but you can realistically do anything that Python permits here.
 
-Example script (found in this repo's cookiecutter template):
+Example script (found in this repo's cookiecutter template):  
 `post_gen_project.py`  
 ```python
 import os
