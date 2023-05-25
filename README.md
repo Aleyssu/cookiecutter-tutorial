@@ -199,27 +199,27 @@ Here's an example file with all the different variable types present:
 	"__jinja2_extension_variable": "{% now 'utc', '%Y' %}"
 }
 ```
-`"standard_variable": ""`
+`"standard_variable": ""`  
 These are the simplest Jinja2 variables, holding the value of a string or other variable (using the {{  }} syntax).
 
-`"__private_rendered_variable": ""`
+`"__private_rendered_variable": ""`  
 Similar to standard variables, private rendered variables, indicated by the prepended `__`, can hold the value of a string or other variable. As a private variable, there will be no prompt for this variable during project generation.
 In this example, this variable holds the value, "Test Project."
 
-`"_private_unrendered_variable": ""`
+`"_private_unrendered_variable": ""`  
 Private unrendered variables, indicated by the prepended `_`, will only display strings. As a private variable, there will be no prompt for this variable during project generation. 
 In this example, this variable holds the value, "{{ cookiecutter.standard_variable }}."
 
-`"_copy_without_render": []`
+`"_copy_without_render": []`  
 This is a special variable which must be written exactly as shown. `_copy_without_render` contains a list of strings representative to [Unix wildcards](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm) which indicate the files and directories that should not be rendered by Jinja2. In this example, .html files and files/directories named "unrendered" will not be rendered.
 
-`"choice_variable": []`
+`"choice_variable": []`  
 Choice variables, indicated by the square brackets containing a list of strings, provide the user with a multiple-choice prompt on project generation where they are given the option to select one of the given strings. The first string in the list is the default value.
 
-`"dictionary_variable": {}`
+`"dictionary_variable": {}`  
 Dictionary variables are as the name suggests, containing key-value pairs. Dictionaries can also contain lists and other dictionaries. They provide a way to define deep-structured information when rendering templates.
 
-`"__jinja2_extension_variable": ""`
+`"__jinja2_extension_variable": ""`  
 This is just another rendered private variable put in place to demonstrate the ability to fill variable values with those from Jinja2 extensions. In this example, the built-in *jinja2_time.TimeExtension* extension is used to display the current year at the time of project generation.
 
 ### <a name="processeddirectory"></a>"{{ processed_directory }}"
