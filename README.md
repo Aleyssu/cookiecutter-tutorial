@@ -21,6 +21,9 @@ Much of this wiki's content is thanks to the help of Cookiecutter's official doc
 2. [Cookiecutter in-depth](#cookiecutter-in-depth)  
 	1. [Runtime - Cookiecutter's project generation process](#runtime---cookiecutters-project-generation-process)
 	2. [Templates and file structure](#templates-and-file-structure)
+		1. [cookiecutter.json](#cookiecutter.json)
+		2. [Processed directory](#processeddirectory)
+		3. [Hooks](#hooks)
 
 # Introduction
 ## What is Cookiecutter?
@@ -219,7 +222,7 @@ Dictionary variables are as the name suggests, containing key-value pairs. Dicti
 `"__jinja2_extension_variable": ""`
 This is just another rendered private variable put in place to demonstrate the ability to fill variable values with those from Jinja2 extensions. In this example, the built-in *jinja2_time.TimeExtension* extension is used to display the current year at the time of project generation.
 
-### "{{ processed_directory }}"
+### <a name="processeddirectory"></a>"{{ processed_directory }}"
 Note the formatting of the first sub-directory's name. This is the syntax for Jinja variables, and it's necessary for there to be a directory named under a variable from `cookiecutter.json` in this syntax. When executing, Cookiecutter will pick the first directory / file it finds which contains a Jinja variable in its name (based on lexicographical order) to copy and process into a project. 
 
 In this example, it is assumed that there's a variable named `processsed_directory` within `cookiecutter.json`. After running Cookiecutter, a new directory will be created with the name of whatever value `processed_directory` was assigned. If `processed_directory` was assigned with "apple," then the generated project directory would also be called "apple."
