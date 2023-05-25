@@ -21,7 +21,7 @@ Much of this wiki's content is thanks to the help of Cookiecutter's official doc
 2. [Cookiecutter in-depth](#cookiecutter-in-depth)  
 	1. [Runtime - Cookiecutter's project generation process](#runtime---cookiecutters-project-generation-process)
 	2. [Templates and file structure](#templates-and-file-structure)
-		1. [cookiecutter.json](#cookiecutter.json)
+		1. [cookiecutter.json](#cookiecutterjson)
 		2. [Processed directory](#processeddirectory)
 		3. [Hooks](#hooks)
 
@@ -162,7 +162,7 @@ Main Directory / Repo/
 │   └── post_gen_project.py  
 └── cookiecutter.json  
 ```
-### cookiecutter.json
+### <a name="cookiecutterjson"></a>cookiecutter.json
 This is a vital component of all cookiecutters. Within this file contains all the Jinja variables which the user is prompted with during project generation, and these are the variables which are used when formatting the text in the names and contents of the project files.  
 Here's an example file with all the different variable types present:
 ```json
