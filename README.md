@@ -1,14 +1,19 @@
 
 
 
+
 # Cookiecutter Tutorial
 This is a cookiecutter repo for demonstrating what cookiecutter is, what it can do, how to use it, and much of its functionalities.
 
 See https://cookiecutter.readthedocs.io/en/stable/installation.html for installation.
 
-This repo is also contains a cookiecutter project which demonstrates much of Cookiecutter's functionality. Feel free to download and experiment with it. You can also generate a project directly from the repo (see [Running Cookiecutter](#if-youre-running-with-a-remote-cookiecutter-repo-from-github)) (make sure you're using a command line with Unix support!)
+## Some extra information before we begin...
 
-Much of this wiki's content is thanks to the help of Cookiecutter's official documentation, along with personal experimentation to see into Cookiecutter's workings. See https://cookiecutter.readthedocs.io/en/stable/advanced/index.html for the official documentation.
+- This repo also acts as a cookiecutter project which demonstrates much of Cookiecutter's functionality. Feel free to download and experiment with it. You can also generate a project directly from the repo (see [Running Cookiecutter](#if-youre-running-with-a-remote-cookiecutter-repo-from-github)) (make sure you're using a command line with Unix support!)
+
+- Much of this page's content has beenc created with the help of Cookiecutter's official documentation, along with some personal experimentation to see into Cookiecutter's workings. See https://cookiecutter.readthedocs.io/en/stable/advanced/index.html for the official documentation.
+
+- Cookiecutter makes heavy use of Jinja2 for project generation. See [here](https://jinja.palletsprojects.com/en/3.1.x/) for in-depth documentation on Jinja2.
 
 # Table of contents  
 1. [Introduction](#introduction) 
@@ -231,6 +236,8 @@ Note that outside of the double curly brackets you may include whatever text you
 
 ### Hooks
 Hooks are an optional component of cookiecutter templates. They can assist in input validation for the prompts, and custom generation behavior such as removing and restructuring directories in the final project directory.
+
+Note that while the examples demonstrated here are in Python, shell scripts (`pre_gen_project.sh` and `post_gen_project.sh`) are a supported alternative to Python scripts.
 
 The *pre_gen_project.py* hook runs right after all the input prompts have been answered, and right before the new project directory has been created. It is typically used to ensure that the input prompts are valid for the given template.
 
