@@ -25,7 +25,7 @@ cookiecutter(
     # template from the root directory.
     # Remember that the main directory can itself be the template directory,
     # where the directory argument would then not be needed.
-    directory='template2'
+    directory='.'
 )
 
 # Create project from the remote template
