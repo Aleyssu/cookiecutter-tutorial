@@ -11,7 +11,7 @@ See https://cookiecutter.readthedocs.io/en/stable/installation.html for installa
 
 - This repo also acts as a cookiecutter project which demonstrates much of Cookiecutter's functionality. Feel free to download and experiment with it. You can also generate a project directly from the repo (see [Running Cookiecutter](#if-youre-running-with-a-remote-cookiecutter-repo-from-github)) (make sure you're using a command line with Unix support!)
 
-- Much of this page's content has beenc created with the help of Cookiecutter's official documentation, along with some personal experimentation to see into Cookiecutter's workings. See https://cookiecutter.readthedocs.io/en/stable/advanced/index.html for the official documentation.
+- Much of this page's content has been created with the help of Cookiecutter's official documentation, along with some personal experimentation to see into Cookiecutter's workings. Since Cookiecutter is constantly being updated, newer content may not be documented here. See https://cookiecutter.readthedocs.io/en/stable/advanced/index.html for the official and latest documentation.
 
 - Cookiecutter makes heavy use of Jinja2 for project generation. See [here](https://jinja.palletsprojects.com/en/3.1.x/) for in-depth documentation on Jinja2.
 
@@ -97,7 +97,7 @@ cookiecutter --no-input <path>
 ~~~
 
 #### Load from a pre-configured config file
-If you have a .yaml config file available for your cookiecutter, you can load it using the `--config-file` argument. This works alongside the `--no-input` argument.
+If you have a .yaml or .cookiecuttercc config file available for your cookiecutter, you can load it using the `--config-file` argument. This works alongside the `--no-input` argument.
 ~~~bash
 cookiecutter --config-file <config-file-path> <path>
 ~~~
@@ -201,6 +201,7 @@ Here's an example file with all the different variable types present:
             ]
         }
     },
+    "boolean_variable": false,
 	"__jinja2_extension_variable": "{% now 'utc', '%Y' %}"
 }
 ```
@@ -223,6 +224,11 @@ Choice variables, indicated by the square brackets containing a list of strings,
 
 `"dictionary_variable": {}`  
 Dictionary variables are as the name suggests, containing key-value pairs. Dictionaries can also contain lists and other dictionaries. They provide a way to define deep-structured information when rendering templates.
+
+It's best to either make the User use the default value either from `cookiecutter.json` or from a config file, since manually inputting a dictionary value during prompting requires that the User write an entire dictionary entry in one line, and missing any keys in the dictionary can cause unexpected issues if those keys are used by your template during project generation.
+
+`"boolean_variable": false`
+Boolean variables can contain either `true` or `false` as their value. When being retrieved in Jinja, they will be treated as booleans rather than strings, so you can have commands such as: `{% if cookiecutter.boolean_variable %} <insert text to be rendered here> {% endif %}` 
 
 `"__jinja2_extension_variable": ""`  
 This is just another rendered private variable put in place to demonstrate the ability to fill variable values with those from Jinja2 extensions. In this example, the built-in *jinja2_time.TimeExtension* extension is used to display the current year at the time of project generation.

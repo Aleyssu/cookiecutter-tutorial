@@ -52,7 +52,18 @@
 		}
 	},
 	
+	"boolean_variable": false,
+	
 	"__jinja2_extension_variable": "{% now 'utc', '%Y' %}",
+	
+	"__prompts__": {
+		"project_name": "Project Name:",
+		"keep_files": "Which files do you want?",
+		"choice_variable": "Choose one",
+		"file_types": "File types (recommended to leave default):",
+		"dictionary_variable": "Dictionary variable (recommended to leave default):",
+		"boolean_variable": "Boolean true/false:"
+	},
 	
 	"__timestamp": "null"
 }
